@@ -149,78 +149,78 @@ public class PlateauUI extends JPanel
 		
 	}
 	public void deplacePion(int carreau){
-	//	int tmp=positionprecedante[ihm.getMonopoly().getJoueurs().getFirst().getNum()];
+	//	int tmp=positionprecedante[ihm.getMonopoly().getioueurs().getFirst().getNum()];
 		int i=ihm.getMonopoly().getJoueurs().getFirst().getNum();
 		
-		for(int j=0;j<ihm.getMonopoly().getJoueurs().size();j++){
+
 			if(carreau>0 && carreau<10){
 					
 				
-				if(j<3){
-					images[j].setBounds( 738+(j*25)-((carreau-1)*74), 865,25, 25);
+				if(i<3){
+					images[i].setBounds( 738+(i*25)-((carreau-1)*74), 865,25, 25);
 					
 				
 				}else{
 				
-					images[j].setBounds( 738+((j-3)*25)-((carreau-1)*74), 890,25, 25);
+					images[i].setBounds( 738+((i-3)*25)-((carreau-1)*74), 890,25, 25);
 				}
 			}else if(carreau==10){
-				if(j<3){
-					images[j].setBounds(738+(j*25)-((carreau-1)*74), 900,25, 25 );
+				if(i<3){
+					images[i].setBounds(738+(i*25)-((carreau-1)*74), 900,25, 25 );
 					
 				
 				}else{
 				
-					images[j].setBounds( 700-((carreau-1)*74), 865-((j-3)*25),25, 25);
+					images[i].setBounds( 700-((carreau-1)*74), 865-((i-3)*25),25, 25);
 				}
 			}else if(carreau>10 && carreau<20){
-				if(j<3){
-					images[j].setBounds( 40+(j*25), 750-((carreau-11)*74),25, 25);
+				if(i<3){
+					images[i].setBounds( 40+(i*25), 750-((carreau-11)*74),25, 25);
 					
 				
 				}else{
 				
-					images[j].setBounds( 40+((j-3)*25), 775-((carreau-11)*74),25, 25);
+					images[i].setBounds( 40+((i-3)*25), 775-((carreau-11)*74),25, 25);
 				}
 				
 			}else if(carreau==20){
-				if(j<3){
-					images[j].setBounds( 40+(j*25), 720-((carreau-11)*74),25, 25);
+				if(i<3){
+					images[i].setBounds( 40+(i*25), 720-((carreau-11)*74),25, 25);
 					
 				
 				}else{
 				
-					images[j].setBounds( 40+((j-3)*25), 745-((carreau-11)*74),25, 25);
+					images[i].setBounds( 40+((i-3)*25), 745-((carreau-11)*74),25, 25);
 					
 				}
 			}else if(carreau>20 && carreau<30){
-				if(j<3){
-					images[j].setBounds( 148+(j*25)+((carreau-21)*74), 50,25, 25);
+				if(i<3){
+					images[i].setBounds( 148+(i*25)+((carreau-21)*74), 50,25, 25);
 					
 				
 				}else{
 				
-					images[j].setBounds( 148+((j-3)*25)+((carreau-21)*74), 75,25, 25);
+					images[i].setBounds( 148+((i-3)*25)+((carreau-21)*74), 75,25, 25);
 				}
 				
 			}else if(carreau==30){
-				if(j<3){
-					images[j].setBounds( 180+(j*25)+((carreau-21)*74), 50,25, 25);
+				if(i<3){
+					images[i].setBounds( 180+(i*25)+((carreau-21)*74), 50,25, 25);
 					
 				
 				}else{
 				
-					images[j].setBounds( 180+((j-3)*25)+((carreau-21)*74), 75,25, 25);
+					images[i].setBounds( 180+((i-3)*25)+((carreau-21)*74), 75,25, 25);
 				}
 				
 			}else if(carreau>30 && carreau<40){
-				if(j<3){
-					images[j].setBounds( 846+(j*25), 160+((carreau-31)*74),25, 25);
+				if(i<3){
+					images[i].setBounds( 846+(i*25), 160+((carreau-31)*74),25, 25);
 					
 				
 				}else{
 				
-					images[j].setBounds( 846+((j-3)*25), 185+((carreau-31)*74),25, 25);
+					images[i].setBounds( 846+((i-3)*25), 185+((carreau-31)*74),25, 25);
 				}
 				
 			}else if(carreau==0){
@@ -231,16 +231,16 @@ public class PlateauUI extends JPanel
 					images[i].setBounds( 845+((i-3)*25), 870,25, 25);
 				}
 			}else{
-				if(j<3){
-					images[j].setBounds(70+(j*25), 835,25, 25 );
+				if(i<3){
+					images[i].setBounds(70+(i*25), 835,25, 25 );
 					
 				
 				}else{
 				
-					images[j].setBounds( 70+((j-3)*25), 860,25, 25);
+					images[i].setBounds( 70+((i-3)*25), 860,25, 25);
 				}
 
-			}
+			
 		}
 		
 	}
