@@ -102,7 +102,7 @@ public class ProprieteAConstruire extends CarreauPropriete {
 	    int prix = gr.getPrixMaison();
 	    int nbHotel = this.getNbHotels();
 	    int arg = j.getCash();
-	    Scanner sc = new Scanner(System.in);
+
 	    if (nbHotel == 0 && arg >= prix) {
 		int nbHotelDispo = monopoly.getNbHotelsDispo();
 		int nbMaisonDispo = monopoly.getNbMaisonsDispo();
@@ -159,7 +159,7 @@ public class ProprieteAConstruire extends CarreauPropriete {
 
 	int prix;
 	String choix;
-	Scanner sc = new Scanner(System.in);
+
 	prix = this.getPrixAchat(); 
 	if (j.getCash() >= prix) {
 	    print(j.getPositionCourante().getNomCarreau(), monopoly);

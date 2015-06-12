@@ -100,7 +100,7 @@ public class InfosUI  extends JPanel
     	maker = new JButton("Made by...");
     	construire = new JButton(" contruire");
     	jouer = new JButton("jouer !");
-    	logs.append("Lorem ipsu"+"\n"+"m dolor sit amet, conse"+"\n"+"ctetur adi"+"\n"+"piscing elit."+"\n"+" Pellentes"+"\n"+"que ultrices "+"\n"+"interdum nisl"+"\n"+" sit amet t"+"\n"+"incidunt. Proin el"+"\n"+"eifend ligu"+"\n"+"la ut odio ru"+"\n"+"trum, ac rho"+"\n"+"ncus "+"\n"+"enim imperdiet"+"\n"+". Nullam"+"\n"+" vehicu"+"\n"+"la tempor metus, ut r"+"\n"+"utru"+"\n"+"m tortor imperdiet sed."+"\n"+" Vivamus eget felis quis lectus tincidunt rhoncus eu "+"\n"+"tristique"+"\n"+" mauris. In ac ipsum id felis"+"\n"+" porta iaculis eu placerat felis. Nunc convallis d"+"\n"+"ignissim"+"\n"+" nis"+"\n"+"i, quis eleife"+"\n"+"nd justo"+"\n"+" malesuada ut. Cras in tempor tur"+"\n"+"pis, a he"+"\n"+"ndrerit enim. Morbi "+"\n"+"sed vestibulum sem."+"\n"+" Suspendisse metu"+"\n"+"s metus, bibendum sed "+"\n"+"pellentesque eu, "+"\n"+"laoreet a urna. Praesent at"+"\n"+" quam eu nibh tristique elementum eget a eros. Cras justo urna, "+"\n"+"scelerisque aliquam lobortis id, m"+"\n"+"olestie "+"\n"+"nec quam. Pellentesque mollis faucibus s"+"\n"+"apien, eget euismod dui "+"\n"+"condimentum "+"\n"+"at. Morbi co"+"\n"+"nva"+"\n"+"llis lectus et ultrices vehi"+"\n"+"cula. Morbi eg"+"\n"+"et justo quis"+"\n"+""+"\n"+"");
+//    	logs.append("");
     	//this.setLayout(new BorderLayout());
     	bouttons.add(jouer);
     	bouttons.add(construire);

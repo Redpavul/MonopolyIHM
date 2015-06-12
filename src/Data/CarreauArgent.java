@@ -46,7 +46,7 @@ public class CarreauArgent extends CarreauAction
 
 		Joueur j =getMonopoly().getJoueurs().getFirst();
 		if(getMontant()!=0){
-			System.out.println(getNomCarreau()+" : "+getMontant()+"€");
+			print(getNomCarreau()+" : "+getMontant()+"€", monopoly);
 			j.setCash(j.getCash()+getMontant());
 		}
 

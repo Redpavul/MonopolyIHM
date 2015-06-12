@@ -2,6 +2,7 @@ package Data;
 
 import static Data.CouleurPropriete.*;
 import Jeu.Monopoly;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -40,7 +41,9 @@ public class Joueur {
     public void setMonopoly(Monopoly monopoly) {
 	this.monopoly = monopoly;
     }
-
+	public void print(String str,Monopoly monopoly){
+		monopoly.getInterf().getIhm().getInfos().addlogs(str);
+	}
 
     public void setCompagnies(Compagnie[] compagnies) {
 	this.setCompagnies(compagnies);
@@ -127,7 +130,7 @@ public class Joueur {
     	int i = 0;
 	for (ProprieteAConstruire p : getProprietes()) {
 	    i++;
-	    System.out.println("[" + i + "] " + p.getNomCarreau());
+	    print("[" + i + "] " + p.getNomCarreau(), monopoly);
 	}
 	return i;
     }
@@ -136,7 +139,7 @@ public class Joueur {
 
 	int i = 1;
 	for (ProprieteAConstruire p : getProprietes()) {
-	    System.out.println(p.getNomCarreau());
+	    print(p.getNomCarreau(), monopoly);
 	    if (i == indice) {
 		return p;
 	    }

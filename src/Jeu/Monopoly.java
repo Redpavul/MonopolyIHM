@@ -274,7 +274,7 @@ public class Monopoly {
 
     public void jouerUnCoup(Joueur j) {
 
-	String choix;
+//	String choix;
 
 	print("\n\n******************************************************************");
 	print("                    Tour de " + j.getNomJoueurCouleur() + "      ");
@@ -282,10 +282,10 @@ public class Monopoly {
 	
 
 	
-	    choix = getInterf().getIhm().getInfos().boiteMessage("Entrer dans le mode Scenario ? (oui/non)");
+	//    choix = getInterf().getIhm().getInfos().boiteMessage("Entrer dans le mode Scenario ? (oui/non)");
 
 	
-	if (choix.equals("oui")) {
+//	if (choix.equals("oui")) {
 	   // triche(j);
 	    if (j.getPositionCourante() instanceof CarreauAction) {
 		((CarreauAction) j.getPositionCourante()).action();
@@ -293,16 +293,16 @@ public class Monopoly {
 	    if (j.isPrison()) {
 		actionPrison();
 	    } else {
-
-		actionTour(j);
-	    }
-	} else if (j.isPrison()) // Si le joueur est en prison
-	{
-	    this.actionPrison();
-	} else // Si le joueur n'est pas en prison
-	{
 	    this.lancerDesAvancer();
-	}
+//		actionTour(j);
+	    }
+//  }else if (j.isPrison()) // Si le joueur est en prison
+//	{
+//	    this.actionPrison();
+//	} else // Si le joueur n'est pas en prison
+//	{
+//	    
+//	}
 
     }
 
@@ -541,12 +541,13 @@ public class Monopoly {
 //    }
 
     public void deplacerJoueur(int numCase, Joueur joueur) {//Permet de déplacer un joueur d'après un numéro entré par l'utilisateur (mode triche)
-	Scanner sc = new Scanner(System.in);
+	
 	while (numCase > 40 || numCase < 1) {
 	    System.out.println("Mauvaise saisie.Veuillez recommencer : ");
-	    numCase = sc.nextInt();
+	    numCase = Integer.parseInt(getInterf().getIhm().getInfos().boiteMessage("Numeros case ?"));
 	}
 	joueur.setPositionCourante(listCarreaux[numCase - 1]);
+	this.getInterf().getIhm().getPlateau().deplacePion(joueur.getPositionCourante().getNumeroCarreau()-1);
 
     }
 

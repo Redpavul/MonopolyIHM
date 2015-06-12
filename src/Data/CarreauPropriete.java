@@ -44,13 +44,13 @@ public abstract class CarreauPropriete extends Carreau
     if (this.getProprietaire() == null) {
         if (j.getCash() >= montant) {
 
-		System.out.println("Vous devez " + montant + "€ à la banque !");
+		print("Vous devez " + montant + "€ à la banque !", monopoly);
 		j.setCash(j.getCash()-montant);
 	    }
 	} else {
 	    Joueur j2 = this.getProprietaire();
 	    if (j.getCash() <= montant && j != j2) {
-		System.out.println("\nVous n'avez pas assez d'argent pour payer, vous avez perdu ! Vous avez pu payer " + j.getCash() + "€ à " + j2.getNomJoueur() + "\n");
+		print("\nVous n'avez pas assez d'argent pour payer, vous avez perdu ! Vous avez pu payer " + j.getCash() + "€ à " + j2.getNomJoueur() + "\n", monopoly);
                 j2.setCash(j2.getCash()+j.getCash());
 		monopoly.getJoueurs().removeFirst();
 	    } else if (j != j2) {
