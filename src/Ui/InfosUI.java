@@ -126,25 +126,31 @@ public class InfosUI  extends JPanel
     	
     	jouer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               ihm.getMonopoly().actionTour(ihm.getMonopoly().getJoueurs().getFirst());
+            	Joueur j;
+            	if (!ihm.getMonopoly().isEndGame()) {
+            	    j = ihm.getMonopoly().getJoueurs().getFirst();
+            	    
+            	    ihm.getMonopoly().jouerUnCoup(j);
+            	    if (j == ihm.getMonopoly().getJoueurs().getFirst()) {
+
+            	    	ihm.getMonopoly().getJoueurs().addLast(ihm.getMonopoly().getJoueurs().pollFirst()); //On remet le joueur à la fin de la LinkedList .
+            	    }
+            	}else{
+
+            		addlogs("Le joueur gagnant est : " + ihm.getMonopoly().getJoueurs().getFirst().getNomJoueur());
 
             }
+            	}
         });
     	
     	construire.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	if(typeSelec==false){
             		
-	            	
-	                String message;
 	                
 	
-	                JOptionPane.showMessageDialog(
-	                        null,
-	                        "Pas de propriété selectionné ! \n"+
-	                        "veulliez en selectionné une ", 
-	                        "", 
-	                        JOptionPane.PLAIN_MESSAGE);
+	               boiteError("Pas de propriété selectionné ! \n"+
+	                        "veulliez en selectionné une ");
             	}else{ ((ProprieteAConstruire) ihm.getMonopoly().getListCarreaux()[Integer.parseInt(getProprieteselectionner())]).construireIHM(ihm.getMonopoly()); 
             		}
             	
@@ -238,6 +244,14 @@ public class InfosUI  extends JPanel
         	message="non";
         }
 		return message;
+    }
+    public void boiteError(String str){
+        JOptionPane.showMessageDialog(
+                null,
+                str, 
+                "", 
+                JOptionPane.PLAIN_MESSAGE);
+    	
     }
 
 	public String getProprieteselectionner() {

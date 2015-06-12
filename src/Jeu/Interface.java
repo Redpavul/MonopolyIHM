@@ -14,7 +14,7 @@ public class Interface implements Runnable {
 
     public void run() {
 
-	Monopoly monopoly = new Monopoly("data.txt");
+	Monopoly monopoly = new Monopoly("data.txt",this);
 	setIhm(new IHM(monopoly));
     }
 
