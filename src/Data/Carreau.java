@@ -9,10 +9,12 @@ public class Carreau
 	private int numeroCarreau;
 	private String nomCarreau;
 
-	public Carreau(String nomCarreau, int numeroCarreau)
+	public Carreau(String nomCarreau, int numeroCarreau,Monopoly monopoly)
 	{
 		this.numeroCarreau = numeroCarreau;
-		this.nomCarreau = nomCarreau;		
+		this.nomCarreau = nomCarreau;
+		this.monopoly=monopoly;
+		
 	}
 
 	public int getNumeroCarreau()
@@ -42,5 +44,8 @@ public class Carreau
 	public void setMonopoly(Monopoly mono)
 	{
 		this.monopoly = mono;
+	}
+	public void print(String str,Monopoly monopoly){
+		monopoly.getInterf().getIhm().getInfos().addlogs(str);
 	}
 }

@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class Compagnie extends CarreauPropriete {
 
-    public Compagnie(int prixAchat, String nomCarreau, int numeroCarreau) {
-	super(prixAchat, nomCarreau, numeroCarreau);
+    public Compagnie(int prixAchat, String nomCarreau, int numeroCarreau,Monopoly monopoly) {
+	super(prixAchat, nomCarreau, numeroCarreau,monopoly);
 	prixAchat = 150;
     }
 
@@ -35,13 +35,11 @@ public class Compagnie extends CarreauPropriete {
 
 	int prix;
 	boolean bon = true;
-	Scanner sca = new Scanner(System.in);
 	    prix = this.getPrixAchat();
 	    if (j.getCash() >= prix) {
-		System.out.println(j.getPositionCourante());
-		System.out.println("joueur " + j.getNomJoueur() + " voulez vous acheter la gare " + this.getNomCarreau() + " pour un prix de " + prixAchat + " ? (oui/non)");
-		while (bon) {
-		    String choix = sca.nextLine();
+		
+
+		    String choix = monopoly.getInterf().getIhm().getInfos().boiteMessage("joueur " + j.getNomJoueur() + " voulez vous acheter la gare " + this.getNomCarreau() + " pour un prix de " + prixAchat + " ? (oui/non)");
 		    if (choix.contentEquals("oui")) {
 			bon = false;
 			payer(j, prix);
@@ -50,7 +48,7 @@ public class Compagnie extends CarreauPropriete {
 		    } else if (choix.contentEquals("non")) {
 			bon = true;
 		    }
-		}
+		
 
 	    }
 	}
@@ -61,7 +59,7 @@ public class Compagnie extends CarreauPropriete {
 
 	    if (j != j2) {
 		calculLoyerCompagnie();
-		System.out.println("joueur " + j.getNomJoueur() + " vous êtes arrivé sur la " + this.getNomCarreau() + " qui appartiens a " + j2.getNomJoueur() + " vous lui devez " + loyer + "€ ");
+		print("joueur " + j.getNomJoueur() + " vous êtes arrivé sur la " + this.getNomCarreau() + " qui appartiens a " + j2.getNomJoueur() + " vous lui devez " + loyer + "€ ",monopoly);
 
 	    }
 

@@ -1,5 +1,7 @@
 package Data;
 
+import Jeu.Monopoly;
+
 
 public abstract class CarreauPropriete extends Carreau
 {
@@ -10,9 +12,9 @@ public abstract class CarreauPropriete extends Carreau
         protected int loyer;
 
 	
-    public CarreauPropriete(int prixAchat, String nomCarreau, int numeroCarreau)
+    public CarreauPropriete(int prixAchat, String nomCarreau, int numeroCarreau,Monopoly monopoly)
     {
-		super(nomCarreau, numeroCarreau);
+		super(nomCarreau, numeroCarreau,monopoly);
 		this.prixAchat = prixAchat;
     }
 

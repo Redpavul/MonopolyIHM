@@ -107,7 +107,7 @@ public class Monopoly {
 		    int numeroCarreau = Integer.parseInt(data.get(i)[1]);
 		    int prixAchat = Integer.parseInt(data.get(i)[4]);
 
-		    ProprieteAConstruire p = new ProprieteAConstruire(prixAchat, nomCarreau, numeroCarreau, a, loyers, prixMaison, prixHotel);
+		    ProprieteAConstruire p = new ProprieteAConstruire(prixAchat, nomCarreau, numeroCarreau, a, loyers, prixMaison, prixHotel,this);
 
 		    a.getProprietes().add(p);
 		    listGroupes.put(data.get(i)[3], a);
@@ -120,7 +120,7 @@ public class Monopoly {
 		    int numeroCarreau = Integer.parseInt(data.get(i)[1]);
 		    String nomCarreau = data.get(i)[2];
 		    int prixAchat = Integer.parseInt(data.get(i)[3]);
-		    Gare gare = new Gare(prixAchat, nomCarreau, numeroCarreau);
+		    Gare gare = new Gare(prixAchat, nomCarreau, numeroCarreau,this);
 		    listCarreaux[numeroCarreau - 1] = gare;
 		} //Compagnies
 		else if (caseType.compareTo("C") == 0) {
@@ -128,7 +128,7 @@ public class Monopoly {
 		    int numeroCarreau = Integer.parseInt(data.get(i)[1]);
 		    String nomCarreau = data.get(i)[2];
 		    int prixAchat = Integer.parseInt(data.get(i)[3]);
-		    Compagnie c = new Compagnie(prixAchat, nomCarreau, numeroCarreau);
+		    Compagnie c = new Compagnie(prixAchat, nomCarreau, numeroCarreau,this);
 		    listCarreaux[numeroCarreau - 1] = c;
 		} //CaseTirage
 		else if (caseType.compareTo("CT") == 0) {
@@ -229,6 +229,7 @@ public class Monopoly {
 		    + " soit au total " + (des1 + des2) + ".");
 	    System.out.println("Il aura comme couleur " + couleur.toStringCouleur() + "\n");
 	    Joueur j = new Joueur(listCarreaux[0], nom, couleur);
+	    j.setNum(i);
 	    j.setDes(des1 + des2);
 	    joueursTemp[i] = j;
 	    
@@ -269,9 +270,7 @@ public class Monopoly {
 		getInterf().getIhm().getInfos().addlogs(str);
 	}
     //Fonction servant � faire la boucle de jeu : continue tant que deux joueurs n'ont pas perdu
-	public void boucleDeJeu() {
 
-    }
 
     public void jouerUnCoup(Joueur j) {
 
@@ -286,7 +285,7 @@ public class Monopoly {
 	    choix = getInterf().getIhm().getInfos().boiteMessage("Entrer dans le mode Scenario ? (oui/non)");
 
 	
-	if (choix.equalsIgnoreCase("oui")) {
+	if (choix.equals("oui")) {
 	   // triche(j);
 	    if (j.getPositionCourante() instanceof CarreauAction) {
 		((CarreauAction) j.getPositionCourante()).action();
@@ -424,7 +423,7 @@ public class Monopoly {
 
 		    choix = getInterf().getIhm().getInfos().boiteMessage("Acheter la case sur laquelle on se trouve ?"); //On r�cup�re la r�ponse de l'utilisateur
 		    
-	    if(choix=="oui"){
+	    if(choix.equals("oui")){
 		    if (j.getPositionCourante() instanceof CarreauPropriete) {
 			if (((CarreauPropriete) j.getPositionCourante()).getProprietaire() == null) {
 			    ((CarreauPropriete) j.getPositionCourante()).acheterPropriete(j);
@@ -432,8 +431,7 @@ public class Monopoly {
 		    } else {
 		    	getInterf().getIhm().getInfos().boiteError("Vous ne pouvez pas acheter cette case ! ");
 		    }
-		}
-
+	    }
 	    if (j.getPositionCourante() instanceof CarreauPropriete) {
 		cp = (CarreauPropriete) j.getPositionCourante();
 		if (cp.getProprietaire() != null && cp.getProprietaire() != j) {
@@ -567,7 +565,7 @@ public class Monopoly {
 	    //On fait un modulo 40 pour placer le joueur sur la bonne case
 
 	}
-    this.getInterf().getIhm().getPlateau().deplacePion(j.getPositionCourante().getNumeroCarreau());
+    this.getInterf().getIhm().getPlateau().deplacePion(j.getPositionCourante().getNumeroCarreau()-1);
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

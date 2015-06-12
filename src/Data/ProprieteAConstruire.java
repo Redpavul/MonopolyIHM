@@ -9,16 +9,14 @@ public class ProprieteAConstruire extends CarreauPropriete {
     private int nbMaisons = 0;
     private int nbHotels = 0;
     private int[] loyerMaison;
+    public ProprieteAConstruire(int prixAchat, String nomCarreau, int numeroCarreau, Groupe groupePropriete, int[] loyerMaison, int prixMaison, int prixHotel,Monopoly monopoly) {
+	super(prixAchat, nomCarreau, numeroCarreau,monopoly);
 
-    public ProprieteAConstruire(int prixAchat, String nomCarreau, int numeroCarreau, Groupe groupePropriete, int[] loyerMaison, int prixMaison, int prixHotel) {
-	super(prixAchat, nomCarreau, numeroCarreau);
 	this.groupePropriete = groupePropriete;
 	this.loyerMaison = loyerMaison;
 
     }
-	public void print(String str,Monopoly monopoly){
-		monopoly.getInterf().getIhm().getInfos().addlogs(str);
-	}
+
 	public void construireIHM(Monopoly monopoly) {
 		Joueur j = monopoly.getJoueurs().getFirst();
 		Groupe gr = this.getGroupePropriete();
@@ -110,11 +108,11 @@ public class ProprieteAConstruire extends CarreauPropriete {
 		int nbMaisonDispo = monopoly.getNbMaisonsDispo();
 		if (nbMaison == 4) {
 		    if (nbHotelDispo > 0) {
-			System.out.println("Acheter un hotel sur cette propriete ? (oui/non)");
+		    	
 			String reponse;
-			do {
-			    reponse = sc.nextLine();
-			} while (!reponse.equals("oui") && !reponse.equals("non"));
+			
+			    reponse = monopoly.getInterf().getIhm().getInfos().boiteMessage("Acheter un hotel sur cette propriete ? (oui/non)");
+		
 
 			if (reponse.equals("oui")) {
 			    j.setCash(arg - prix);
@@ -122,34 +120,34 @@ public class ProprieteAConstruire extends CarreauPropriete {
 			    monopoly.setNbMaisonsDispo(nbMaisonDispo + 4);
 			    this.setNbHotels(1);
 			    monopoly.setNbHotelsDispo(nbHotelDispo - 1);
-			    System.out.println("Vous avez construit un hotel");
+			    print("Vous avez construit un hotel", monopoly);
 			} else {
-			    System.out.println("vous n'avez pas construit d'hotel");
+			    print("vous n'avez pas construit d'hotel", monopoly);
 			}
 		    }
 		} else {
 		    if (nbMaisonDispo > 0) {
-			System.out.println("Cette propriété possède " + this.getNbMaisons() + " maisons");
-			System.out.println("Acheter une maison sur cette propriete ? (oui/non)");
+			print("Cette propriété possède " + this.getNbMaisons() + " maisons", monopoly);
+			
 			String reponse;
-			do {
-			    reponse = sc.nextLine();
-			} while (!reponse.equals("oui") && !reponse.equals("non"));
+
+			    reponse = monopoly.getInterf().getIhm().getInfos().boiteMessage("Acheter une maison sur cette propriete ? (oui/non)");
+
 			if (reponse.equals("oui")) {
 			    j.setCash(arg - prix);
 			    this.setNbMaisons(nbMaison + 1);
 			    monopoly.setNbMaisonsDispo(nbMaisonDispo - 1);
-			    System.out.println("Vous avez construit une maison");
+			    print("Vous avez construit une maison", monopoly);
 			} else {
 			    System.out.println("vous n'avez pas construit de maison");
 			}
 		    }
 		}
 	    } else {
-		System.out.println("Vous n'avez pas assez d'argent pour construire");
+		print("Vous n'avez pas assez d'argent pour construire", monopoly);
 	    }
 	} else {
-	    System.out.println("Vous n'avez pas le droit de construire");
+	    print("Vous n'avez pas le droit de construire", monopoly);
 	}
     }
 
@@ -162,18 +160,14 @@ public class ProprieteAConstruire extends CarreauPropriete {
 	int prix;
 	String choix;
 	Scanner sc = new Scanner(System.in);
-	prix = this.getPrixAchat();
+	prix = this.getPrixAchat(); 
 	if (j.getCash() >= prix) {
-	    System.out.println(j.getPositionCourante().getNomCarreau());
-	    System.out.println("Voulez vous acheter la propriété " + this.getNomCarreau() + " pour un prix de " + prixAchat + " ? (oui/non)");
-	    do {
-		choix = sc.nextLine();
-		if (!choix.equalsIgnoreCase("oui") && !choix.equalsIgnoreCase("non")) {
-		    System.out.println("Veuillez entrer oui ou non : ");
-		}
-	    } while (!choix.equalsIgnoreCase("oui") && !choix.equalsIgnoreCase("non"));
+	    print(j.getPositionCourante().getNomCarreau(), monopoly);
 
-	    if (choix.contentEquals("oui")) {
+		choix = monopoly.getInterf().getIhm().getInfos().boiteMessage("Voulez vous acheter la propriété " + this.getNomCarreau() + " pour un prix de " + prixAchat + " ? (oui/non)");
+
+
+	    if (choix.equals("oui")) {
 		payer(j, prix);
 		this.setProprietaire(j);
 		j.getProprietes().add(this);
@@ -191,7 +185,7 @@ public class ProprieteAConstruire extends CarreauPropriete {
 	    montant = this.getLoyerMaison()[5];
 	}
 	if (j != j2) {
-	    System.out.println("joueur " + j.getNomJoueur() + " vous êtes arrivé sur le/la " + this.getNomCarreau() + " qui appartiens a " + j2.getNomJoueur() + " vous lui devez " + montant + "€ ");
+	    print("joueur " + j.getNomJoueur() + " vous êtes arrivé sur le/la " + this.getNomCarreau() + " qui appartiens a " + j2.getNomJoueur() + " vous lui devez " + montant + "€ ", monopoly);
 	    payer(j, montant);
 	}
 

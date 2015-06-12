@@ -238,11 +238,12 @@ public class InfosUI  extends JPanel
         
     	
         choix=JOptionPane.showConfirmDialog(null,str, str, JOptionPane.YES_NO_OPTION);
-        if(choix.toString()=="0"){
+        if(choix.toString().equals("0")){
         	message="oui";
         }else{
         	message="non";
         }
+        addlogs(message);
 		return message;
     }
     public void boiteError(String str){
