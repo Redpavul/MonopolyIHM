@@ -98,8 +98,8 @@ public class InfosUI  extends JPanel
 
     	
     	maker = new JButton("Made by...");
-    	construire = new JButton(" contruire");
-    	jouer = new JButton("jouer !");
+    	construire = new JButton(" Construire");
+    	jouer = new JButton("Jouer !");
 //    	logs.append("");
     	//this.setLayout(new BorderLayout());
     	bouttons.add(jouer);
